@@ -1,4 +1,4 @@
-FROM openwrtorg/rootfs:x86-64-19.07.6
+FROM openwrt/rootfs:x86-64-19.07.7
 
 LABEL maintainer="DianQK <dianqk@icloud.com>"
 
@@ -13,8 +13,8 @@ RUN mkdir /var/lock
 RUN opkg update
 RUN opkg install libustream-mbedtls ca-certificates kmod-tun
 
-ADD uu_prepare /etc/init.d/uu_prepare
-RUN /etc/init.d/uu_prepare enable
+ADD xunyou_prepare /etc/init.d/xunyou_prepare
+RUN /etc/init.d/xunyou_prepare enable
 # 关闭 ipv6 dhcp
 RUN /etc/init.d/odhcpd disable
 # 关闭防火墙规则

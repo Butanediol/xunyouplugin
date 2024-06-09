@@ -1,10 +1,12 @@
-# uuplugin docker 版本
+# xunyouplugin docker 版本
 
-UU 加速提供了 OpenWrt 版本的插件，见 https://router.uu.163.com/app/baike/public/5f963c9304c215e129ca40e8.html。
-该项目基于 OpenWrt 的 openwrtorg/rootfs 版本构完成了开启 UU 需要的配置，同时移除了一些无关服务，如 DHCP、SSH、Web luci。
+`s/UU/迅游/g`
+
+迅游加速提供了 OpenWrt 版本的插件，见 https://www.xunyou.com/client/2022/html/treasure-box/95025.html。
+该项目基于 OpenWrt 的 openwrtorg/rootfs 版本构完成了开启迅游需要的配置，同时移除了一些无关服务，如 DHCP、SSH、Web luci。
 你可以使用该镜像完成旁路由模式下 UU 加速服务快速部署。
 
-因为不同的 OpenWrt 版本对路由规则配置不同（或者别的什么），导致检测不到游戏主机连入。主要表现为主机在 UU app 中出现后立即消失。
+因为不同的 OpenWrt 版本对路由规则配置不同（或者别的什么），导致检测不到游戏主机连入。主要表现为主机在迅游 app 中出现后立即消失。
 使用该 docker 镜像应当可以有效解决该问题。
 
 ## 环境准备
@@ -55,20 +57,20 @@ ENV UU_LAN_DNS="119.29.29.29"
 启动命令示例如下：
 
 ```
-docker run -d --name uuplugin \
+docker run -d --name xunyouacc \
 --network bridge-host \
 --privileged \
 -e UU_LAN_IPADDR=192.168.18.77 \
 -e UU_LAN_GATEWAY=192.168.18.1 \
-dianqk/uuplugin
+butanediol/xunyouacc
 ```
 
 - `UU_LAN_IPADDR` 为该容器使用的 IP，也是游戏主机的网关
 - `UU_LAN_GATEWAY` 为该容器的上级网关
 
-## 绑定 UU 服务
+## 绑定迅游服务
 
-UU 主机加速 app 会检测手机网关进行通信判断是否安装的 UU 插件，所以你需要**将手机网关和 DNS 指向刚刚创建的容器使用的 IP**。
+迅游主机加速 app 会检测手机网关进行通信判断是否安装的迅游插件，所以你需要**将手机网关和 DNS 指向刚刚创建的容器使用的 IP**。
 打开 app 点击安装路由器插件绑定即可。
 此后为了避免影响手机上网，绑定完毕后，手机的网关和 DNS 可以改回原来的设定。
 

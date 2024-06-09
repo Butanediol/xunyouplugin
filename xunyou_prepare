@@ -23,6 +23,6 @@ config interface 'lan'
   uci commit dhcp
   /etc/init.d/dnsmasq restart
 
-  wget https://uu.gdl.netease.com/uuplugin-script/202012111056/install.sh -O /root/install.sh
+  wget http://partnerdownload.xunyou.com/routerplugin/install.sh -O /root/install.sh
   /bin/sh /root/install.sh openwrt $(uname -m)
 }
